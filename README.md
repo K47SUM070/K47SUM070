@@ -1,4 +1,4 @@
-# Deja Tu Huella MVP
+# Deja Tu Huella Borrador #1
 
 MVP de e-commerce para una tienda de indumentaria local en Argentina.
 

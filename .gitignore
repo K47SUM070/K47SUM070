@@ -1,8 +1,10 @@
 node_modules
 .next
 .env
+.env.local
 .DS_Store
 
 ideasnuevas/Imagenes/Instagram_files/
 ideasnuevas/Imagenes/*.html
 *.download
+*.log

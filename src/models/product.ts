@@ -1,14 +1,28 @@
-import mongoose from "mongoose";
+import mongoose, { Model, Schema } from "mongoose";
 
-const ProductSchema = new mongoose.Schema({
-  nombre: { type: String },
-  precio: { type: Number },
-  stock: { type: Number },
-  codigo: { type: String },
-  imagenes: [{ type: String }],
-});
+export type ProductDocument = {
+  name: string;
+  price: number;
+  stock: number;
+  description: string;
+  createdAt: Date;
+};
 
-const Product =
-  mongoose.models.Product || mongoose.model("Product", ProductSchema);
+const productSchema = new Schema<ProductDocument>(
+  {
+    name: { type: String, required: true, trim: true },
+    price: { type: Number, required: true, min: 0 },
+    stock: { type: Number, required: true, min: 0, default: 0 },
+    description: { type: String, required: true, trim: true },
+    createdAt: { type: Date, default: Date.now },
+  },
+  {
+    versionKey: false,
+  },
+);
 
-export default Product;
+const ProductModel: Model<ProductDocument> =
+  mongoose.models.Product ||
+  mongoose.model<ProductDocument>("Product", productSchema);
+
+export default ProductModel;
